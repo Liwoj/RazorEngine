@@ -1,0 +1,36 @@
+source https://nuget.org/api/v2
+
+nuget Nuget.CommandLine
+nuget Yaaf.AdvancedBuilding !>= 0
+
+group Net45
+  condition: NET45
+  source https://nuget.org/api/v2
+
+  nuget Microsoft.AspNet.Razor ~> 3.0
+  nuget Microsoft.CodeAnalysis != 1.0.0-rc2
+
+group Net40
+  condition: NET40
+  source https://nuget.org/api/v2
+  framework: net40
+
+  nuget Microsoft.AspNet.Razor ~> 2.0
+
+group Razor4
+  condition: RAZOR4
+  source https://nuget.org/api/v2
+
+// We should update to rc1, however they always break a lot... If you come here and have some time please update me
+  nuget Microsoft.AspNet.Razor = 4.0.0-beta7
+  nuget Microsoft.CodeAnalysis != 1.0.0-rc2
+
+group Test
+  source https://nuget.org/api/v2
+
+  nuget NUnit ~> 2
+  nuget NUnit.Runners ~> 2
+  nuget Moq
+
+// Locked, because 4.0.2 has breaking changes. If you have some time you can try to fix it.
+  nuget Unity 4.0.1
